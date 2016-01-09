@@ -1,0 +1,7 @@
+<h1>Currently Existing Tags</h1>
+<% @tags.each do |tag| %>
+  <p><%= link_to tag.name, tag_path(tag) %>
+    <%= link_to 'delete tag', tag_path(tag), method: :delete,
+    data: {confirm: "Really delete this tag?"}%><br></p>
+<% end %>
+<%= link_to 'Home Page', articles_path %>
