@@ -34,18 +34,6 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    @taggings = Tagging.all
-    @taggings.each do |tagging|
-      if tagging.article_id == params[:id]
-        Tagging.find(tagging.id).destroy
-      end
-    end
-    @comments = Comment.all
-    @comments.each do |comment|
-      if comment.article_id == params[:id]
-        Comment.find(comment.id).destroy
-      end
-    end
     @article.destroy
     flash.notice = "Article '#{@article.title}' Deleted!"
     redirect_to articles_path
